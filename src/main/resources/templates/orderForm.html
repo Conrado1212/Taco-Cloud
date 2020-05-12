@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmls:th="thymeleaf.org" xmlns:xmls="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Aplikacja Taco-Cloud</title>
+    <link rel="stylesheet=" th.href="@{/style.css}" />
+</head>
+<body>
+<form method="POST" th:action="@{/orders}" th:object="${order}">
+    <h1>Zamow przygotowane taco</h1>
+
+    <img th:src="@{/imagines/Taco-Cloud.jpg}"/>
+    <a th:href="@{design}" id="another">Przygotuj kolejne taco</a><br/>
+
+    <div th:if="${field.hasError()}">
+        <span class="validationError">Usun wymienione problemy i  sprobuj ponownie</span>
+    </div>
+
+    <h2>Adres dostarczenia taco</h2>
+    <label for="name">Imie i nazwisko :</label>
+    <input type="text" th:field="*{name}"/>
+    <br/>
+
+    <label for="street">Ulica : </label>
+    <input type="text" th:field="*{ulica}"/>
+    <br/>
+
+    <label for="city">Miejscowosc : </label>
+    <input type="text" th:field="*{ulica}"/>
+    <br/>
+
+    <label for="state">Wojewodztwo : </label>
+    <input type="text" th:field="*{ulica}"/>
+    <br/>
+
+    <label for="zip">Kod pocztowy : </label>
+    <input type="text" th:field="*{ulica}"/>
+    <br/>
+
+    <h2>Sposob platnosci </h2>
+    <label for="ccNumber">Numer karty kredytowej</label>
+    <input type="text" th;field="*{ccNumber}"/>
+    <br/>
+
+    <label for="ccExpiration">Data waznosci</label>
+    <input type="text" th;field="*{ccExpiration}"/>
+    <br/>
+
+    <label for="ccCVV">Kod CVV: </label>
+    <input type="text" th;field="*{ccCVV}"/>
+    <br/>
+
+    <input type="submit" value="Zloz zamowienie"/>
+</form>
+</body>
+</html>
