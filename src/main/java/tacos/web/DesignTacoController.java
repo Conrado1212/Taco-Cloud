@@ -64,8 +64,7 @@ public class DesignTacoController {
             return "design";
         }
 
-        // Save the taco design...
-        // We'll do this in chapter 3
+
         log.info("Processing design: " + design);
 
         return "redirect:/orders/current";
@@ -73,7 +72,7 @@ public class DesignTacoController {
 
 
 
-    //tag::filterByType[]
+  
     private List<Ingredient> filterByType(
             List<Ingredient> ingredients, Type type) {
         return ingredients
