@@ -24,21 +24,21 @@ import tacos.Taco;
 @RequestMapping("/design")
 public class DesignTacoController {
 
-//end::head[]
+
 
     @ModelAttribute
     public void addIngredientsToModel(Model model) {
         List<Ingredient> ingredients = Arrays.asList(
-                new Ingredient("FLTO", "Flour Tortilla", Type.WRAP),
-                new Ingredient("COTO", "Corn Tortilla", Type.WRAP),
-                new Ingredient("GRBF", "Ground Beef", Type.PROTEIN),
-                new Ingredient("CARN", "Carnitas", Type.PROTEIN),
-                new Ingredient("TMTO", "Diced Tomatoes", Type.VEGGIES),
-                new Ingredient("LETC", "Lettuce", Type.VEGGIES),
+                new Ingredient("FLTO", "pszenna", Type.WRAP),
+                new Ingredient("COTO", "kukurydziana ", Type.WRAP),
+                new Ingredient("GRBF", "mielona wołowina", Type.PROTEIN),
+                new Ingredient("CARN", "kawałki miesa", Type.PROTEIN),
+                new Ingredient("TMTO", " pomidory pokrojone w kostke", Type.VEGGIES),
+                new Ingredient("LETC", "sałata", Type.VEGGIES),
                 new Ingredient("CHED", "Cheddar", Type.CHEESE),
                 new Ingredient("JACK", "Monterrey Jack", Type.CHEESE),
-                new Ingredient("SLSA", "Salsa", Type.SAUCE),
-                new Ingredient("SRCR", "Sour Cream", Type.SAUCE)
+                new Ingredient("SLSA", "pikantny sos pomidorowy", Type.SAUCE),
+                new Ingredient("SRCR", "śmietana ", Type.SAUCE)
         );
 
         Type[] types = Ingredient.Type.values();
@@ -48,28 +48,16 @@ public class DesignTacoController {
         }
     }
 
-    //tag::showDesignForm[]
+
     @GetMapping
     public String showDesignForm(Model model) {
         model.addAttribute("design", new Taco());
         return "design";
     }
 
-//end::showDesignForm[]
 
-/*
-//tag::processDesign[]
-  @PostMapping
-  public String processDesign(Design design) {
-    // Save the taco design...
-    // We'll do this in chapter 3
-    log.info("Processing design: " + design);
-    return "redirect:/orders/current";
-  }
-//end::processDesign[]
- */
 
-    //tag::processDesignValidated[]
+
     @PostMapping
     public String processDesign(@Valid @ModelAttribute("design") Taco design, Errors errors, Model model) {
         if (errors.hasErrors()) {
@@ -83,7 +71,7 @@ public class DesignTacoController {
         return "redirect:/orders/current";
     }
 
-//end::processDesignValidated[]
+
 
     //tag::filterByType[]
     private List<Ingredient> filterByType(
@@ -94,6 +82,5 @@ public class DesignTacoController {
                 .collect(Collectors.toList());
     }
 
-//end::filterByType[]
-// tag::foot[]
+
 }
